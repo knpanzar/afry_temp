@@ -1,0 +1,22 @@
+package afry;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import afry.JUnitXmlTestCase;
+import afry.TestReportBuilder;
+
+public class JUnitEventCollector implements EventCollector<TestReportBuilder, JUnitXmlTestCase> {
+    List<JUnitXmlTestCase> testCases = new ArrayList<>();
+
+    @Override
+    public void add(JUnitXmlTestCase jUnitXmlTestCase) {
+        testCases.add(jUnitXmlTestCase);
+    }
+
+    @Override
+    public void write() {
+        TestReportBuilder.writeJUnitTestReport(testCases);
+    }
+
+}
